@@ -23,7 +23,6 @@ public class Main {
         int number = 0;
         int magic_num = (new Random()).nextInt(10);
         while (isGame) {
-            System.out.println("Загадали " + magic_num);
 
             do {
                 System.out.print("Введите целое число: ");
