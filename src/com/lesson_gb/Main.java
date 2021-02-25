@@ -141,13 +141,11 @@ public class Main {
         {
             return true;
         }
-
-
-        if (map[0][0] == symb && map[1][1] == symb && map[2][2] == symb)
+        if (isCheckCrossLeftRight(symb))
         {
             return true;
         }
-        if (map[0][2] == symb && map[1][1] == symb && map[2][0] == symb)
+        if (isCheckCrossRightLeft(symb))
         {
             return true;
         }
@@ -216,6 +214,69 @@ public class Main {
                 }
             }
         }
+        return false;
+    }
+
+    static boolean isCheckCrossLeftRight(char symb)
+    {
+        int countToWin = 0;
+
+        for (int i = 0; i < SIZE; i++)
+        {
+            if (map[i][i] == symb)
+            {
+                countToWin++;
+                if (ischeckWin(countToWin))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                countToWin = 0;
+                continue;
+            }
+
+            if (countToWin != 3 && i == 2)
+            {
+                countToWin = 0;
+                break;
+            }
+        }
+
+        return false;
+    }
+
+
+    static boolean isCheckCrossRightLeft(char symb)
+    {
+        int countToWin = 0;
+        int reverse = SIZE;
+
+        for (int i = 0; i < SIZE; i++)
+        {
+            reverse--;
+            if (map[i][reverse] == symb)
+            {
+                countToWin++;
+                if (ischeckWin(countToWin))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                countToWin = 0;
+                continue;
+            }
+
+            if (countToWin != 3 && i == 2)
+            {
+                countToWin = 0;
+                break;
+            }
+        }
+
         return false;
     }
 
