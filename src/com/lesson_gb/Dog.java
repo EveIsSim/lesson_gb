@@ -2,13 +2,16 @@ package com.lesson_gb;
 
 public class Dog extends Animal {
 
-    @Override
-    public void run(int distance) {
+    static int dogCnt = 0;
+
+    public Dog(String name) {
+
+        super(name, 500, 10);
+        Dog.dogCnt++;
 
     }
 
-    @Override
-    public void swim(int distance) {
-
+    public static void getDogCnt(){
+        System.out.println("Общее кол-во собак: " + dogCnt);
     }
 }
