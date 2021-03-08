@@ -16,9 +16,24 @@ public class Plate
 
     void decreaseFood(int appetite)
     {
-        if (appetite > food)
+        if (!hasEnoughFood(appetite))
+        {
             return;
+        }
 
         this.food -= appetite;
     }
+
+    //    6. Добавить в тарелку метод, с помощью которого можно было бы добавлять еду в тарелку.
+    public void increaseFood(int food)
+    {
+        this.food += food;
+    }
+
+    public boolean hasEnoughFood(int appetite)
+    {
+        return appetite <= food;
+    }
+
+
 }
