@@ -1,39 +1,44 @@
 package com.lesson_gb.competitors;
 
-public class Human implements Competitor {
+public class Human implements Competitor{
 
-    private int maxRun;
-    private int maxJump;
+    private int maxDistance;
+    private int maxHeight;
+    private String name;
+    private static int countHuman;
 
-    public Human(int maxRun, int maxJump){
-        this.maxRun = maxRun;
-        this.maxJump = maxJump;
+    public Human(String name, int maxDistance, int maxHeight){
+        this.name = name;
+        this.maxDistance = maxDistance;
+        this.maxHeight = maxHeight;
+
+        countHuman++;
     }
 
     public Human(){
-        this(3000, 2);
+        this("Human_"+ ++countHuman, 3000, 1);
     }
 
     @Override
-    public boolean jump(int dist){
-        if (dist <= maxJump) {
-            System.out.println("Человек перепрыгнул " + dist + "m");
+    public boolean run(int distance) {
+        if (this.maxDistance >= distance){
+            System.out.println(this.name + " смог пробежать " + distance + " м");
             return true;
         }
-        else {
-            System.out.println("Человек не смог перепрыгнуть " + dist + "m");
+        else{
+            System.out.println(this.name + " не смог пробежать " + distance + " м");
             return false;
         }
     }
 
     @Override
-    public boolean run(int dist){
-        if (dist <= maxRun) {
-            System.out.println("Человек пробежал " + dist + "m");
+    public boolean jump(int height) {
+        if (this.maxHeight >= height){
+            System.out.println(this.name + " смог перепрыгнуть " + height + " м");
             return true;
         }
-        else {
-            System.out.println("Человек не смог пробежать " + dist + "m");
+        else{
+            System.out.println(this.name + " не смог перепрыгнуть " + height + " м");
             return false;
         }
     }
